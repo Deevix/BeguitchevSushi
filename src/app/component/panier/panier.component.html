@@ -10,17 +10,17 @@
   </thead>
   <tbody>
     <tr *ngFor="let panierBox of panier">
-      <td>{{panierBox.quantite}}</td>
+      <td>{{getTtlQuantity()}}</td>
       <td>{{ panierBox.nom }}</td>
       <td>{{ panierBox.prix }} €</td>
-      <td>mettre image angular material -</td>
-      <td>mettre image angular material +</td>
+      <td style="text-align: center"><img src="../assets/images/plus.png" style="width:40px; height:auto;" (click)="ajouterQuantite(panierBox)"></td>
+      <td style="text-align: center"><img src="../assets/images/effacer.png" style="width:40px; height:auto;" (click)="diminuerQuantite(panierBox)"></td>
     </tr>
   </tbody>
 </table>
 
   <td ><button>Valider</button></td>
-  <td><b>Total : {{ getTtl() }} €</b></td>  
+  <td><b>Total : {{ getTtl() }} €</b></td>
 
 <ng-container *ngIf="panier.length === 0">
   <p>Panier vide !</p>

@@ -12,7 +12,7 @@ import { ManagerPanierService } from 'src/app/service/manager-panier.service';
 export class PanierComponent implements OnInit {
   panier: Ipanier[] = [];
 
-  
+
   constructor(private managerPanierService: ManagerPanierService) { }
 
   ngOnInit(){
@@ -23,24 +23,23 @@ export class PanierComponent implements OnInit {
     return this.panier.reduce((total, panierBox) => total + panierBox.prix * panierBox.quantite, 0);
   }
 
-  
+
   ajouterQuantite(box: Ipanier){
-      box.quantite++;
+    box.quantite++;
   }
 
   diminuerQuantite(box: Ipanier){
-      box.quantite--; 
-      
-      const nbB = this.panier.reduce((total, panierBox) => total + panierBox.quantite, 0);
-      if (nbB == 1) {
-        this.supprimerBox(box);
+      box.quantite--;
+      if(box.quantite <= 0)
+      {
+        this.supprimerBox(box)
       }
     }
 
   supprimerBox(box : Ipanier){
-    const index = this.panier.findIndex((element) => element.nom === box.nom); 
+    const index = this.panier.findIndex((element) => element.nom === box.nom);
     if (index !== -1) {
-      this.panier.splice(index, 1); 
+      this.panier.splice(index, 1);
     }
   }
 

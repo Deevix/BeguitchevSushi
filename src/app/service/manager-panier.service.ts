@@ -16,12 +16,14 @@ export class ManagerPanierService {
   }
 
   ajouterAuPanier(box: IBox){
-    const panierBox = new Ipanier(box.nom, 1, box.prix);
-    this.panier.push(panierBox);
-  }
+    const index = this.panier.findIndex((element) => element.nom === box.nom);
 
-  miseAJourNombreBoxs(){
-    return this.panier.reduce((total, panierBox) => total + panierBox.quantite, 0);
-
+    if (index !== -1) {
+      this.panier[index].quantite++;
+    }
+    else {
+      const panierBox = new Ipanier(box.nom, 1, box.prix);
+      this.panier.push(panierBox);
+    }
   }
 }
