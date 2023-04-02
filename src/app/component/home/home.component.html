@@ -2,7 +2,12 @@
 <section class="section">
     <table *ngIf="sushiBoxes.length > 0; else sushiEmpty" class="table is-striped center">
         <thead>
-
+        <nav class="navbar navbar-expand-xl navbar-light bg-light">
+          <div class="container-fluid">
+            <img src="../assets/images/logoSushiFast.png" style="width:100px; height:100px;">
+            <img src="../assets/images/SushiFast.png" style="width:200px; height:auto;">
+          </div>
+        </nav>
         </thead>
         <tbody>
             <tr *ngFor="let sushiBox of sushiBoxes">
@@ -10,7 +15,6 @@
                     <div id="popup{{ sushiBox.id }}" class="overlay">
                         <div class="popup">
                             <h2>{{ sushiBox.nom }}</h2>
-                            <ul>Pieces : {{ sushiBox.pieces }} </ul>
                             <ul>Prix : {{ sushiBox.prix }} € </ul>
                             <ul>Aliments :</ul>
                             <ul>
