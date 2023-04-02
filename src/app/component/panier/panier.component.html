@@ -1,1 +1,27 @@
-<p>panier works!</p>
+<h1>Panier</h1>
+
+<table>
+  <thead>
+    <th>Quantite</th>
+    <th>Nom</th>
+    <th>Prix</th>
+    <th>Ajouter</th>
+    <th>Retirer</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let panierBox of panierBoxes">
+      <td>{{ panierBox.quantite}}</td>
+      <td>{{ panierBox.nom }}</td>
+      <td>{{ panierBox.prix }} €</td>
+      <td>mettre image angular material -</td>
+      <td>mettre image angular material +</td>
+    </tr>
+  </tbody>
+</table>
+
+  <td ><button>Valider</button></td>
+  <td><b>Total : {{ getTotal() }} €</b></td>  
+
+<ng-container *ngIf="panier.length === 0">
+  <p>Panier vide !</p>
+</ng-container>
