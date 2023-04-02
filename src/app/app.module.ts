@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { PanierComponent } from './component/panier/panier.component';
+import { HeaderComponent } from './component/header/header.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { PanierComponent } from './component/panier/panier.component';
     AppComponent,
     HomeComponent,
     PanierComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
