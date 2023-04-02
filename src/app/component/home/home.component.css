@@ -1,0 +1,114 @@
+.section {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7;
+    }
+    
+    h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    }
+    
+    table {
+    margin-top: 2rem;
+    border-collapse: collapse;
+    width: 100%;
+    }
+    
+    th, td {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.2rem;
+    }
+    
+    th {
+    background-color: #4CAF50;
+    color: white;
+    }
+    
+    tr:nth-child(even) {
+    background-color: #f2f2f2;
+    }
+    
+    img {
+    width: 150px;
+    height: auto;
+    }
+    
+    #popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+    }
+    
+    .popup {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    max-width: 600px;
+    max-height: 600px;
+    overflow: auto;
+    text-align: left;
+    }
+    
+    #popup:target {
+    opacity: 1;
+    visibility: visible;
+    }
+    
+    .popup h2 {
+    margin-top: 0;
+    }
+    
+    .popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+    
+    .popup li {
+    margin-bottom: 0.5rem;
+    }
+    
+    button {
+    padding: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    }
+    
+    button:hover {
+    background-color: #3e8e41;
+    }
+    
+    #popup button {
+    display: block;
+    margin: auto;
+    }
+    
+    .ng-template {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    }

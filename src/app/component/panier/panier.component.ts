@@ -19,7 +19,7 @@ export class PanierComponent implements OnInit {
     this.panier = this.managerPanierService.getPanier();
   }
 
-  getTotal(): number {
+  getTtl(): number {
     return this.panier.reduce((total, panierBox) => total + panierBox.prix * panierBox.quantite, 0);
   }
 

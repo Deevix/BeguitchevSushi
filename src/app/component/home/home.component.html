@@ -15,8 +15,23 @@
                     <img src="{{pathImage}}{{sushiBox.image}}">                    
                 </td>   
                 <td>
-                   <button>Détail</button>
-                   <button>Ajouter au panier</button>
+                    <div id="popup{{ sushiBox.id }}" class="overlay">
+                        <div class="popup">
+                            <h2>Détails de la box : {{ sushiBox.id }}</h2>
+                            <ul>Nom : {{ sushiBox.nom }} </ul>
+                            <ul>Pieces : {{ sushiBox.pieces }} </ul>
+                            <ul>Prix : {{ sushiBox.prix }} € </ul>
+                            <ul>Aliments :</ul>
+                            <ul>
+                                <li *ngFor="let aliment of sushiBox.aliments">{{ aliment.nom }} ({{ aliment.quantite }})</li>
+                            </ul>
+                            <ul>Saveurs : </ul>
+                            <ul>
+                                <li *ngFor="let flavour of sushiBox.saveurs">{{ flavour }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                   <button (click)="addBox(sushiBox)">Ajouter au panier</button>
                 </td>         
             </tr>        
         </tbody>

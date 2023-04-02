@@ -15,7 +15,7 @@ export class ManagerPanierService {
     return this.panier;
   }
 
-  ajouterBoxAuPanier(box: IBox){
+  ajouterAuPanier(box: IBox){
     const index = this.panier.findIndex((element) => element.nom === box.nom);
     const nbB = this.panier.reduce((total, panierBox) => total + panierBox.quantite, 0);
 
