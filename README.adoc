@@ -1,0 +1,108 @@
+= Fast Sushi Beguitchev
+
+== Diagramme de cas d'utilisation
+
+L’utilisateur s’attend à voir, au minimum, le nom du plateau, son image, son prix et son nombre
+de pièces, son panier.
+L’utilisateur aura la possibilité d’en voir le détail d’une boxe comme la composition et les saveurs.
+L’utilisateur aura la possibilité de mettre une boxe de son panier puis d'annuler ou confirmer la commande.
+
+[plantuml,png]
+-----
+@startuml
+!pragma useVerticalIf on
+title Diagramme de cas d'utilisation
+
+left to right direction
+actor User as g #orange
+
+rectangle Action {
+
+  usecase "Consulter liste des Boxes" as UC1 #lightblue
+  usecase "Consulter détails d'une Box" as UC2 #lightblue
+
+  usecase "Sélectionner une Box" as UC7 #lightblue
+  usecase "Gérer panier" as UC9 #lightblue
+  usecase "Confirmer le panier" as UC0 #lightblue
+}
+
+g --> UC1
+UC1 --> UC2
+UC1 --> UC7
+UC2 --> UC7
+UC7 --> UC9
+g --> UC9
+UC9 --> UC0
+
+@enduml
+-----
+== Diagramme d'activité du panier
+Le diagramme du panier lorsque l'utilisateur intéragit avec.
+[plantuml]
+-----
+@startuml
+title Diagramme d'activité
+start
+:Afficher le panier et la liste des box disponibles;
+:Retrait d'un éléménts du panier;
+repeat :Vérifier si le panier est vide;
+
+repeat while (Le panier est vide) is (yes) not (no)
+  :Sélectionner la box à retirer du panier;
+  :Retirer la box du panier;
+  :Mettre à jour le panier;
+  :Afficher un message de confirmation;
+stop
+
+@enduml
+-----
+
+== Diagramme des tiers
+L'utilisateur aura accès depuis un navigateur, à l'application web, qui elle-même communiquera avec l'api et le serveur HTTP.
+[plantuml]
+-----
+@startuml
+!pragma useVerticalIf on
+title Diagramme des tiers
+left to right direction
+
+actor User as g #orange
+rectangle "Les differents tiers" {
+ node "Serveur HTTP" as Localserv
+ node "Serveur de l'API" as APIserv
+ node "\tNavigateur \n (Application Web)" as Nav
+}
+
+g --> Nav
+Nav <--> Localserv
+Nav <--> APIserv
+
+@enduml
+-----
+
+== Structure JSON du panier
+-----
+[
+    {
+        "id": <Id de la commande>,
+        "quantite": <Quantité de boxes commandées>,
+        "prix": <Prix de la commande>,
+        "articles": [
+            {
+                "nom": "Nom de la box",
+                "quantite": <Quantité de boxes>
+            },
+            {
+                "nom": "Nom de la box",
+                "quantite": <Quantité de boxes>
+            }
+        ]
+    }
+]
+-----
+
+
+
+02/04/2023
+
+Auteurs Tonino Falzone, Benjamin Nauguet et Damien Caye
