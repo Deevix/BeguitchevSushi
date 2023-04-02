@@ -1,24 +1,15 @@
 
 <section class="section">
-    <h2>nb sushis : {{sushiBoxes.length}}</h2>
     <table *ngIf="sushiBoxes.length > 0; else sushiEmpty" class="table is-striped center">
         <thead>
-            <tr>
-                <th>Nom</th>
-                <th>image</th>        
-            </tr>
+
         </thead>
         <tbody>
             <tr *ngFor="let sushiBox of sushiBoxes">
-                <td>{{ sushiBox.nom }}</td>
-                <td>                  
-                    <img src="{{pathImage}}{{sushiBox.image}}">                    
-                </td>   
                 <td>
                     <div id="popup{{ sushiBox.id }}" class="overlay">
                         <div class="popup">
-                            <h2>Détails de la box : {{ sushiBox.id }}</h2>
-                            <ul>Nom : {{ sushiBox.nom }} </ul>
+                            <h2>{{ sushiBox.nom }}</h2>
                             <ul>Pieces : {{ sushiBox.pieces }} </ul>
                             <ul>Prix : {{ sushiBox.prix }} € </ul>
                             <ul>Aliments :</ul>
@@ -27,13 +18,15 @@
                             </ul>
                             <ul>Saveurs : </ul>
                             <ul>
-                                <li *ngFor="let flavour of sushiBox.saveurs">{{ flavour }}</li>
+                                <li *ngFor="let flavour of sushiBox.saveurs">- {{ flavour }}</li>
                             </ul>
+                          <img src="{{pathImage}}{{sushiBox.image}}">
+                          <button (click)="addBox(sushiBox)">Ajouter au panier</button>
                         </div>
                     </div>
-                   <button (click)="addBox(sushiBox)">Ajouter au panier</button>
-                </td>         
-            </tr>        
+
+                </td>
+            </tr>
         </tbody>
         <tfoot>
             <div style="font-weight:bold;">Nombre de boxes : {{ sushiBoxes.length }}</div>
